@@ -1,6 +1,6 @@
-import express from "express"
+import express from "express";
 const router = express.Router();
-import path from "path"
+import path from "path";
 
 import { fileURLToPath } from "url";
 
@@ -9,9 +9,8 @@ const __dirname = path.dirname(__filename);
 
 // home route
 
-router.get('/',
-  async (req, res) => {
-    res.render(path.join(__dirname, '../views/home.ejs'));
-      });
+router.get("/", async (req, res) => {
+  res.render(path.join(__dirname, "../views/home.ejs"));
+});
 
 export default router;

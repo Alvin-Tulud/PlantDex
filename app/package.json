@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "postcss public/css/style.css -o public/css/output.css",
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "format": "prettier --check --ignore-path .gitignore .",
+    "format:fix": "prettier --write --ignore-path .gitignore ."
   },
   "keywords": [],
   "author": "",
@@ -19,10 +21,15 @@
     "fs": "^0.0.1-security",
     "mysql2": "^3.17.1",
     "nodemon": "^3.1.11",
-    "path": "^0.12.7",
-    "tailwindcss": "^4.1.18"
+    "path": "^0.12.7"
   },
   "devDependencies": {
-    "postcss-import": "^16.1.1"
+    "@tailwindcss/postcss": "^4.1.18",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-import": "^16.1.1",
+    "prettier": "^3.8.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.1.18"
   }
 }
