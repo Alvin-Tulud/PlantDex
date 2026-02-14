@@ -12,7 +12,7 @@ export async function identifyPlant(imagePath) {
   const imageBytes = fs.readFileSync(imagePath);
 
   const response = await ai.models.generateContent({
-    model: "gemini-2.5-flash-image",
+    model: "gemini-2.5-flash-lite",
     contents: [
       {
         role: "user",
@@ -30,9 +30,7 @@ Identify this plant and respond ONLY in JSON.
 {
   "commonName": "",
   "scientificName": "",
-  "care": "",
-  "watering": "",
-  "sunlight": ""
+  "nativeTo": ""
 }
 `
           }
