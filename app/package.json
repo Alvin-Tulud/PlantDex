@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "postcss public/css/style.css -o public/css/output.css",
+    "watch": "sass --watch scss/custom.scss public/css/custom.css",
     "start": "nodemon app.js",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore ."
@@ -16,6 +16,7 @@
   "type": "module",
   "dependencies": {
     "@google/genai": "^1.41.0",
+    "bootstrap": "^5.3.8",
     "dotenv": "^17.3.1",
     "ejs": "^4.0.1",
     "express": "^5.2.1",
@@ -23,15 +24,7 @@
     "multer": "^2.0.2",
     "mysql2": "^3.17.1",
     "nodemon": "^3.1.11",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.18",
-    "postcss": "^8.5.6",
-    "postcss-cli": "^11.0.1",
-    "postcss-import": "^16.1.1",
-    "prettier": "^3.8.1",
-    "prettier-plugin-tailwindcss": "^0.7.2",
-    "tailwindcss": "^4.1.18"
+    "path": "^0.12.7",
+    "prettier": "^3.8.1"
   }
 }
