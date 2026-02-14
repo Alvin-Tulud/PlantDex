@@ -21,6 +21,8 @@
     "ejs": "^4.0.1",
     "express": "^5.2.1",
     "fs": "^0.0.1-security",
+    "heatmap.js": "^2.0.5",
+    "leaflet": "^1.9.4",
     "multer": "^2.0.2",
     "mysql2": "^3.17.1",
     "nodemon": "^3.1.11",
