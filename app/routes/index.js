@@ -13,4 +13,9 @@ router.get("/", async (req, res) => {
   res.render(path.join(__dirname, "../views/home.ejs"));
 });
 
+/*
+for req do a sql call for user after they have logged in check if logged in 
+then render all their plants from their id
+*/
+
 export default router;
