@@ -1,6 +1,72 @@
 <%-include("navigator/header.ejs")%>
-<%-include("navigator/login.ejs")%>
 
+<!--container for plant grid items-->
+<div class="w-full flex flex-row items-center justify-center">
+    <div id="plantdisplay"class="w-full p-4 flex flex-row content-evenly justify-center gap-4 flex-wrap font-family-dm-mono">
+        <%# if (plants) {%>
+            <%# plants.forEach(plant => { %>
+                <div class="w-64 bg-white rounded-lg shadow-md p-4">
+                    <img src="/images/20260214_022246.jpg" alt="<%#= plant.name %>" class="object-cover h-40 w-32">
+                    <h2 class="text-xl font-regular mb-2"><%#= plant.name %>plant name</h2>
+                </div>
+                <div class="w-64 bg-white rounded-lg shadow-md p-4">
+                    <img src="/images/20260214_022246.jpg" alt="<%#= plant.name %>" class="object-cover h-40 w-32">
+                    <h2 class="text-xl font-regular mb-2"><%#= plant.name %>plant name</h2>
+                </div>
+                <div class="w-64 bg-white rounded-lg shadow-md p-4">
+                    <img src="/images/20260214_022246.jpg" alt="<%#= plant.name %>" class="object-cover h-40 w-32">
+                    <h2 class="text-xl font-regular mb-2"><%#= plant.name %>plant name</h2>
+                </div>
+                <div class="w-64 bg-white rounded-lg shadow-md p-4">
+                    <img src="/images/20260214_022246.jpg" alt="<%#= plant.name %>" class="object-cover h-40 w-32">
+                    <h2 class="text-xl font-regular mb-2"><%#= plant.name %>plant name</h2>
+                </div>
+                <div class="w-64 bg-white rounded-lg shadow-md p-4">
+                    <img src="/images/20260214_022246.jpg" alt="<%#= plant.name %>" class="object-cover h-40 w-32">
+                    <h2 class="text-xl font-regular mb-2"><%#= plant.name %>plant name</h2>
+                </div>
+                <div class="w-64 bg-white rounded-lg shadow-md p-4">
+                    <img src="/images/20260214_022246.jpg" alt="<%#= plant.name %>" class="object-cover h-40 w-32">
+                    <h2 class="text-xl font-regular mb-2"><%#= plant.name %>plant name</h2>
+                </div>
+                <div class="w-64 bg-white rounded-lg shadow-md p-4">
+                    <img src="/images/20260214_022246.jpg" alt="<%#= plant.name %>" class="object-cover h-40 w-32">
+                    <h2 class="text-xl font-regular mb-2"><%#= plant.name %>plant name</h2>
+                </div>
+                <div class="w-64 bg-white rounded-lg shadow-md p-4">
+                    <img src="/images/20260214_022246.jpg" alt="<%#= plant.name %>" class="object-cover h-40 w-32">
+                    <h2 class="text-xl font-regular mb-2"><%#= plant.name %>plant name</h2>
+                </div>
+                <div class="w-64 bg-white rounded-lg shadow-md p-4">
+                    <img src="/images/20260214_022246.jpg" alt="<%#= plant.name %>" class="object-cover h-40 w-32">
+                    <h2 class="text-xl font-regular mb-2"><%#= plant.name %>plant name</h2>
+                </div>
+                <div class="w-64 bg-white rounded-lg shadow-md p-4">
+                    <img src="/images/20260214_022246.jpg" alt="<%#= plant.name %>" class="object-cover h-40 w-32">
+                    <h2 class="text-xl font-regular mb-2"><%#= plant.name %>plant name</h2>
+                </div>
+                <div class="w-64 bg-white rounded-lg shadow-md p-4">
+                    <img src="/images/20260214_022246.jpg" alt="<%#= plant.name %>" class="object-cover h-40 w-32">
+                    <h2 class="text-xl font-regular mb-2"><%#= plant.name %>plant name</h2>
+                </div>
+                <div class="w-64 bg-white rounded-lg shadow-md p-4">
+                    <img src="/images/20260214_022246.jpg" alt="<%#= plant.name %>" class="object-cover h-40 w-32">
+                    <h2 class="text-xl font-regular mb-2"><%#= plant.name %>plant name</h2>
+                </div>
+                <div class="w-64 bg-white rounded-lg shadow-md p-4">
+                    <img src="/images/20260214_022246.jpg" alt="<%#= plant.name %>" class="object-cover h-40 w-32">
+                    <h2 class="text-xl font-regular mb-2"><%#= plant.name %>plant name</h2>
+                </div>
+                
+            <%# }) %>
+        <%# } else { %>
+            <div class="hidden">
+                <h1 class="text-4xl font-bold text-center mt-8 mb-4">No Plants Found</h1>
+                <p class="text-center text-gray-600">You haven't added any plants yet. Start by uploading an image!</p>
+            </div>
+        <%# } %>
+    </div>
+</div>
 
 
 <%-include("navigator/footer.ejs")%>
