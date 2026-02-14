@@ -1,23 +1,6 @@
 <%-include("navigator/header.ejs")%>
 <%-include("navigator/login.ejs")%>
-<!--
 
-uncomment code when we have the database set up and can render the plants from the database
 
-<$ if plants && plants.length > 0 { %>
-    <h1 class="text-4xl font-bold text-center mt-8 mb-4">Your Plants</h1>
-    <div class="flex flex-wrap gap-4 p-4">
-        <% plants.forEach(plant => { %>
-            <div class="flex-1 min-w-64 bg-white rounded-lg shadow-md p-4">
-                <h2 class="text-xl font-bold mb-2"><%= plant.name %></h2>
-                <p class="text-gray-600"><%= plant.description %></p>
-                <p class="text-sm text-gray-500 mt-2">Type: <%= plant.type %></p>
-            </div>
-        <% }); %>
-    </div>
-<% } else { %>
-    <h1 class="text-4xl font-bold text-center mt-8 mb-4">No Plants Found</h1>
-    <p class="text-center text-gray-600">You haven't added any plants yet. Start by uploading an image!</p>
-<% } %>
--->
+
 <%-include("navigator/footer.ejs")%>
