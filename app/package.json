@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "postcss public/css/style.css -o public/css/output.css",
     "start": "nodemon app.js"
   },
   "keywords": [],
@@ -12,7 +13,6 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.18",
     "dotenv": "^17.3.1",
     "ejs": "^4.0.1",
     "express": "^5.2.1",
@@ -20,8 +20,7 @@
     "mysql2": "^3.17.1",
     "nodemon": "^3.1.11",
     "path": "^0.12.7",
-    "tailwindcss": "^4.1.18",
-    "vite": "^7.3.1"
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "postcss-import": "^16.1.1"
