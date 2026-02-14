@@ -1,6 +1,11 @@
-const express = require('express');
+import express from "express"
 const router = express.Router();
-const path = require('path');
+import path from "path"
+
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // home route
 
@@ -9,4 +14,4 @@ router.get('/',
     res.render(path.join(__dirname, '../views/upload.ejs'));
       });
 
-module.exports = router;
+export default router;

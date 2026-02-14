@@ -1,13 +1,13 @@
-const express = require('express');
+import express from "express"
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Index route
-const indexRouter = require('./routes/index');
+import indexRouter from './routes/index.js';
 app.use('/', indexRouter);
 
 // upload route
-const uploadRouter = require('./routes/upload');
+import uploadRouter from './routes/upload.js';
 app.use('/upload', uploadRouter);
 
 
