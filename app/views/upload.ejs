@@ -4,7 +4,7 @@
         <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Upload Photos</h1>
         
         <form action="/upload" method="POST" enctype="multipart/form-data" class="space-y-6">
-            <div class="border-2 border-dashed border-green-400 rounded-lg p-8 text-center hover:border-green-600 transition cursor-pointer" onclick="document.getElementById('fileInput').click()">
+            <div class="border-2 border-dashed border-green-400 rounded-lg p-8 text-center hover:border-green-600 transition cursor-pointer" onclick="document.getElementById('image').click()">
                 <svg class="w-12 h-12 mx-auto text-green-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
@@ -14,9 +14,9 @@
             
             <input 
                 type="file" 
-                id="fileInput" 
-                name="photos" 
-                accept=".png,.PNG,.jpg,.JPG" 
+                id="image" 
+                name="image" 
+                accept="image/png, image/jpeg, image/PNG, image/JPEG"
                 multiple 
                 class="hidden" 
                 required
