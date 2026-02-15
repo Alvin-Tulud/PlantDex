@@ -2,12 +2,15 @@
 
 <!--container for plant grid items-->
 <div class="w-full flex flex-row items-center justify-center">
-    <div id="plantdisplay"class="w-full p-4 flex flex-row content-evenly justify-center gap-4 flex-wrap font-family-dm-mono">
+    <div id="plantdisplay"class="w-full overflow-y-auto h-[42rem] md:h-[38rem] lg:h-[38rem] p-4 flex flex-row content-evenly justify-center gap-4 flex-wrap font-family-dm-mono">
         <%# if (plants) {%>
             <%# plants.forEach(plant => { %>
                 <div class="w-64 bg-white rounded-lg shadow-md p-4">
-                    <img src="/images/20260214_022246.jpg" alt="<%#= plant.name %>" class="object-cover h-40 w-32">
-                    <h2 class="text-xl font-regular mb-2"><%#= plant.name %>plant name</h2>
+                    <button>
+                        <img src="/images/20260214_022246.jpg" alt="<%#= plant.name %>" class="object-cover h-40 w-32">
+                        <h2 class="text-xl font-regular mb-2"><%#= plant.name %>plant name</h2>
+                    </button>
+                    
                 </div>
                 <div class="w-64 bg-white rounded-lg shadow-md p-4">
                     <img src="/images/20260214_022246.jpg" alt="<%#= plant.name %>" class="object-cover h-40 w-32">
