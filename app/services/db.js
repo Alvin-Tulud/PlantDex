@@ -64,6 +64,7 @@ export async function updateTable(query, values)
     // values should be an [array], I think something breaks otherwise
     const result = await connection.execute(query, values);
     console.log("Finished executing - check for error logs");
+    return result;
   } catch (err) {
     console.error("Error modifying db:", err.message);
   } finally {
