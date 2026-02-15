@@ -1,33 +1,38 @@
 <%-include("navigator/header.ejs")%>
 
 <!--container for plant grid items-->
-<h1 class="text-4xl font-bold font-family-fraunces text-center mt-4 mb-2">Collection</h1>
-<div class="p-2 border-b-2 border-gray-700"></div>
-<div class="w-full flex flex-row items-center justify-center">
-    <div id="plantdisplay"class="w-full overflow-y-auto h-[42rem] md:h-[38rem] lg:h-[38rem] p-4 flex flex-row content-evenly justify-center gap-4 flex-wrap font-family-dm-mono">
-        <% if (plants && plants.length > 0) {%>
-            <% plants.forEach(function(plant) { %>
-                <!--Shows plant and name-->
-                <div class="w-[26rem] bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-row content-evenly justify-evenly">
-                    <div class="mb-3">
-                        <img src="/uploads/<%= plant.image%>" alt="<%= plant.common_name %>" class="w-60 h-60 object-cover" onerror="this.onerror=null; this.src='/images/<%= plant.image%>'">
-                        <h3 class="font-bold text-lg">Uploaded by You</h3>
-                        <p class="text-sm text-gray-500">Uploaded on <%= new Date(plant.addition_date).toLocaleDateString() %></p>
+<div class="flex flex-grow items-center justify-around w-full">
+    <div class="flex flex-col items-center justify-around w-full">
+        <h1 class="text-4xl font-bold font-family-fraunces text-center mt-4 mb-2">Collection</h1>
+        <div class="p-2 border-b-2 border-gray-700 w-full"></div>
+        <div class="w-full flex flex-row items-center justify-center">
+            <div id="plantdisplay"class="w-full overflow-y-auto h-[42rem] md:h-[38rem] lg:h-[38rem] p-4 flex flex-row content-evenly justify-center gap-4 flex-wrap font-family-dm-mono">
+                <% if (plants && plants.length > 0) {%>
+                    <% plants.forEach(function(plant) { %>
+                        <!--Shows plant and name-->
+                        <div class="w-[26rem] bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-row content-evenly justify-evenly">
+                            <div class="mb-3">
+                                <img src="/uploads/<%= plant.image%>" alt="<%= plant.common_name %>" class="w-60 h-60 object-cover" onerror="this.onerror=null; this.src='/images/<%= plant.image%>'">
+                                <h3 class="font-bold text-lg">Uploaded by You</h3>
+                                <p class="text-sm text-gray-500">Uploaded on <%= new Date(plant.addition_date).toLocaleDateString() %></p>
+                            </div>
+                            <div class="ml-4">
+                                <h2 class="text-xl font-regular mb-2"><%= plant.scientific_name %></h2>
+                                <p class="text-gray-600"><%= plant.description %></p>
+                                <p class="text-sm text-gray-500 mt-2">Edible: <%= plant.edible %></p>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <div>
+                        <h1 class="text-4xl font-bold text-center mt-8 mb-4">No Plants Found</h1>
+                        <p class="text-center text-gray-600">You haven't added any plants yet. Start by uploading an image!</p>
                     </div>
-                    <div class="ml-4">
-                        <h2 class="text-xl font-regular mb-2"><%= plant.scientific_name %></h2>
-                        <p class="text-gray-600"><%= plant.description %></p>
-                        <p class="text-sm text-gray-500 mt-2">Edible: <%= plant.edible %></p>
-                    </div>
-                </div>
-            <% }) %>
-        <% } else { %>
-            <div>
-                <h1 class="text-4xl font-bold text-center mt-8 mb-4">No Plants Found</h1>
-                <p class="text-center text-gray-600">You haven't added any plants yet. Start by uploading an image!</p>
+                <% } %>
             </div>
-        <% } %>
+        </div>
     </div>
 </div>
+
 
 <%-include("navigator/footer.ejs")%>
