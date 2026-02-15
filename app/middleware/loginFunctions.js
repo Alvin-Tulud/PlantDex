@@ -3,7 +3,7 @@ import { queryTable, updateTable } from "../services/db.js";
 /* ---------------- LOGIN ---------------- */
 export const login = async (req, res, next) => {
   try {
-    const { uname } = req.body;
+    const uname = req.body.username;
 
     // returns user if exists otherwise creates one
     const user = await queryTable("SELECT * FROM user WHERE username = ?", [uname]);
