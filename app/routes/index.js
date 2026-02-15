@@ -3,6 +3,7 @@ const router = express.Router();
 import path from "path";
 
 import { fileURLToPath } from "url";
+import { queryTable } from "../services/db.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -10,7 +11,12 @@ const __dirname = path.dirname(__filename);
 // home route
 
 router.get("/", async (req, res) => {
-  res.render(path.join(__dirname, "../views/home.ejs"));
+  const plants = queryTable("SELECT * FROM plant WHERE fk_user_id = ? ORDER BY addition_date DESC", [12]);
+  res.render(path.join(__dirname, "../views/home.ejs"),
+    {
+      plants: plants
+    }
+  );
 });
 
 /*
