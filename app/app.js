@@ -2,7 +2,7 @@ import express from "express";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-import mysql from "mysql2";
+
 import dotenv from "dotenv";
 dotenv.config();
 
