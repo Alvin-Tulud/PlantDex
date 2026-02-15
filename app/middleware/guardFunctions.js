@@ -1,6 +1,5 @@
 exports.guardrail = async (req, res, next) => {
-    const loginStatus = req.session.loggedIn;
-    if(!loginStatus){
+    if (!req.session.loggedIn || !req.session.user?.user_id) {
         return res.redirect('/login');
     }
     next();
