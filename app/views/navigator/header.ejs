@@ -6,6 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlantDex</title>
     <link rel="stylesheet" href="/css/output.css">
+    <!-- Leaflet CSS -->
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <!-- internal stylesheet bc why not-->
+    <style>
+    #map {
+        height: 500px;
+        width: 100%;
+        margin-top: 20px;
+    }
+    /* Button disabled state */
+    #plantSearchBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    }
+
+        /* Button enabled hover state */
+        #plantSearchBtn:not(:disabled):hover {
+        cursor: pointer;
+        }
+    </style>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+    <script src="/js/plantheatmap.js"></script>
 </head>
 
 <body class="bg-[#F2E3BB] flex flex-col">
