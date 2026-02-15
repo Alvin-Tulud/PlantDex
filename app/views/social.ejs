@@ -1,16 +1,18 @@
 <%-include("navigator/header.ejs")%>
 
 <!--container for plant grid items-->
-<div class="w-full flex flex-row items-center justify-evenly p-2">
+<h1 class="text-4xl font-bold font-family-fraunces text-center mt-4 mb-2">Feed</h1>
+<div class="p-2 border-b-2 border-gray-700"></div>
+<div class="w-full flex flex-col md:flex-row lg:flex-row items-center justify-evenly p-2 gap-2">
     <div id="plantdisplay"class="h-[42rem] md:h-[38rem] lg:h-[38rem] overflow-y-auto p-4 grid grid-cols-1 content-evenly justify-center gap-4 font-family-dm-mono">
         <% if (plants && plants.length > 0) {%>
             <% plants.forEach(function(plant) { %>
 
                 <!--REPLACE INSIDE LOGIC - copy from home.ejs-->
 
-                <div class="w-[40rem] bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-row content-evenly justify-start">
+                <div class=" w-[26rem] md:w-[40rem] lg:w-[40rem] bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-row content-evenly justify-start">
                     <div class="mb-3">
-                        <img src="/uploads/<%= plant.image%>" alt="<%= plant.common_name %>" class="w-80 h-80 object-cover" onerror="this.onerror=null; this.src='/images/<%= plant.image%>'">
+                        <img src="/uploads/<%= plant.image%>" alt="<%= plant.common_name %>" class="w-60 h-60 md:w-80 md:h-80 lg:w-80 lg:h-80 object-cover" onerror="this.onerror=null; this.src='/images/<%= plant.image%>'">
                         <h3 class="font-bold text-lg">Uploaded by <%= plant.username %></h3>
                         <p class="text-sm text-gray-500">Uploaded on <%= new Date(plant.addition_date).toLocaleDateString() %></p>
                     </div>
@@ -24,7 +26,7 @@
                 </div>
             <% }) %>
         <% } else { %>
-            <div class="hidden">
+            <div class="">
                 <h1 class="text-4xl font-bold text-center mt-8 mb-4">No User Posts Found</h1>
                 <p class="text-center text-gray-600">No user posts available.</p>
             </div>
