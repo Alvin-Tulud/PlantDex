@@ -259,8 +259,8 @@
   .h-16 {
     height: calc(var(--spacing) * 16);
   }
-  .h-40 {
-    height: calc(var(--spacing) * 40);
+  .h-60 {
+    height: calc(var(--spacing) * 60);
   }
   .h-80 {
     height: calc(var(--spacing) * 80);
@@ -277,14 +277,14 @@
   .w-16 {
     width: calc(var(--spacing) * 16);
   }
-  .w-32 {
-    width: calc(var(--spacing) * 32);
-  }
-  .w-64 {
-    width: calc(var(--spacing) * 64);
+  .w-60 {
+    width: calc(var(--spacing) * 60);
   }
   .w-80 {
     width: calc(var(--spacing) * 80);
+  }
+  .w-\[26rem\] {
+    width: 26rem;
   }
   .w-\[40rem\] {
     width: 40rem;
@@ -294,12 +294,6 @@
   }
   .max-w-md {
     max-width: var(--container-md);
-  }
-  .min-w-64 {
-    min-width: calc(var(--spacing) * 64);
-  }
-  .flex-1 {
-    flex: 1;
   }
   .basis-1\/2 {
     flex-basis: calc(1/2 * 100%);

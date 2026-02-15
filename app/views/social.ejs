@@ -10,26 +10,14 @@
 
                 <div class="w-[40rem] bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-row content-evenly justify-evenly">
                     <div class="mb-3">
-                        <img src="/images/20260214_021221.jpg" alt="<%#= user.name %>" class="w-80 h-80 object-cover">
-                        <h3 class="font-bold text-lg">Uploaded by <%#= user.name %>UserName</h3>
-                        <p class="text-sm text-gray-500">Uploaded on<%#= new Date(user.createdAt).toLocaleDateString() %>timestamp</p>
+                        <img src="/images/<%#=plant.image%>" alt="<%#= plant.name %>" class="w-80 h-80 object-cover">
+                        <h3 class="font-bold text-lg">Uploaded by <%#= plant.name %>UserName</h3>
+                        <p class="text-sm text-gray-500">Uploaded on<%#= new Date(plant.createdAt).toLocaleDateString() %>timestamp</p>
                     </div>
                     <div class="ml-4">
-                        <h2 class="text-xl font-regular mb-2"><%#= user.plantName %>plant name</h2>
-                        <p class="text-gray-600"><%#= user.plantDescription %>plant description</p>
-                        <p class="text-sm text-gray-500 mt-2">Type: <%#= user.plantType %>plant type</p>
-                    </div>
-                </div>
-                <div class="w-[40rem] bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-row content-evenly justify-evenly">
-                    <div class="mb-3">
-                        <img src="/images/20260214_021221.jpg" alt="<%#= user.name %>" class="w-80 h-80 object-cover">
-                        <h3 class="font-bold text-lg">Uploaded by <%#= user.name %>UserName</h3>
-                        <p class="text-sm text-gray-500">Uploaded on<%#= new Date(user.createdAt).toLocaleDateString() %>timestamp</p>
-                    </div>
-                    <div class="ml-4">
-                        <h2 class="text-xl font-regular mb-2"><%#= user.plantName %>plant name</h2>
-                        <p class="text-gray-600"><%#= user.plantDescription %>plant description</p>
-                        <p class="text-sm text-gray-500 mt-2">Type: <%#= user.plantType %>plant type</p>
+                        <h2 class="text-xl font-regular mb-2"><%#= plant.scientific_name %></h2>
+                        <p class="text-gray-600"><%#= plant.description %></p>
+                        <p class="text-sm text-gray-500 mt-2">Edible: <%#= plant.edible %></p>
                     </div>
                 </div>
             <% }) %>
