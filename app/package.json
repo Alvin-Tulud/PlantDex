@@ -21,8 +21,7 @@
     "ejs": "^4.0.1",
     "express": "^5.2.1",
     "fs": "^0.0.1-security",
-    "heatmap.js": "^2.0.5",
-    "leaflet": "^1.9.4",
+    "fs-extra": "^11.3.3",
     "multer": "^2.0.2",
     "mysql2": "^3.17.1",
     "nodemon": "^3.1.11",
@@ -30,6 +29,8 @@
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
     "prettier": "^3.8.1",
-    "tailwindcss": "^4.1.18"
+    "snowflake-sdk": "^2.3.4",
+    "tailwindcss": "^4.1.18",
+    "uuid": "^13.0.0"
   }
 }
