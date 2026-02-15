@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 
 router.get("/", async (req, res) => {
   const id = req.session.user.user_id;
-  const plants = await queryTable("SELECT * FROM plant WHERE NOT fk_user_id = ? ORDER BY addition_date DESC", [id]);
+  const plants = await queryTable("SELECT * FROM plant JOIN user ON plant.fk_user_id = user.user_id WHERE NOT fk_user_id = ? ORDER BY addition_date DESC", [id]);
   // debugging
   console.log(plants);
   res.render(path.join(__dirname, "../views/social.ejs"),
