@@ -12,15 +12,30 @@ const __dirname = path.dirname(__filename);
 // home route
 
 router.get("/",guardrail, async (req, res) => {
-  const id = req.session.user.user_id;
-  const plants = await queryTable("SELECT * FROM plant JOIN user ON plant.fk_user_id = user.user_id WHERE NOT fk_user_id = ? ORDER BY addition_date DESC", [id]);
+const id = req.session.user.user_id;
+
+queryTable(
+  "SELECT * FROM plant JOIN user ON plant.fk_user_id = user.user_id WHERE NOT fk_user_id = ? ORDER BY addition_date DESC",
+  [id]
+)
+.then((plants) => {
+
   // debugging
   console.log(plants);
-  res.render(path.join(__dirname, "../views/social.ejs"),
+
+  res.render(
+    path.join(__dirname, "../views/social.ejs"),
     {
       plants: plants
     }
   );
+
+})
+.catch((err) => {
+  console.error("Query failed:", err);
+  res.status(500).send("Database error");
+});
+
 });
 
 /*

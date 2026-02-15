@@ -42,10 +42,25 @@ router.post("/",guardrail, upload.single("image"), async (req, res) => {
 
         // To make a new entry I need
         // common_name, scientific_name, edible, coordinates, addition_date (CURRENT_DATE), image
-        const result = await updateTable( "INSERT INTO plant (fk_user_id, common_name, scientific_name, edible, coordinates, addition_date, image) VALUES (?, ?, ?, ?, ?, CURRENT_DATE, ?)", 
-            [req.session.user.user_id, plantData.commonName, plantData.scientificName, plantData.Edible, plantData["nativeTo(Lat,long)"], req.file.filename]);
-
+        updateTable(
+        "INSERT INTO plant (fk_user_id, common_name, scientific_name, edible, coordinates, addition_date, image) VALUES (?, ?, ?, ?, ?, CURRENT_DATE, ?)",
+        [
+            req.session.user.user_id,
+            plantData.commonName,
+            plantData.scientificName,
+            plantData.Edible,
+            plantData["nativeTo(Lat,long)"],
+            req.file.filename
+        ]
+        )
+        .then((result) => {
         return res.redirect(303, "/");
+        })
+        .catch((err) => {
+        console.error("Insert failed:", err);
+        return res.status(500).send("Database error");
+        });
+
 
     } catch (err) {
         console.error("Upload Route Error:", err);

@@ -12,7 +12,7 @@ export async function identifyPlant(imagePath) {
   const imageBytes = fs.readFileSync(imagePath);
 
   const response = await ai.models.generateContent({
-    model: "gemini-2.5-flash-lite",
+    model: "gemini-2.5-flash",
     contents: [
       {
         role: "user",
@@ -30,7 +30,7 @@ export async function identifyPlant(imagePath) {
             {
             "commonName": "",
             "scientificName": "",
-            "Edible": "",
+            "Edible": "", // Binary Yes or No
             "Description": "", // character limit of 512
             "nativeTo(Lat,long)": ""  // Use "lat,long" format, multiple coordinates separated by semicolon
             }

@@ -14,35 +14,46 @@ export const login = async (req, res, next) => {
   try {
     const uname = req.body.username;
 
-    // returns user if exists otherwise creates one
-    const user = await queryTable("SELECT * FROM user WHERE username = ?", [uname]);
-    
-    // create user if couldn't find one
-    if (user.length < 1) {
-      const res = await updateTable("INSERT INTO user (username) VALUES (?)", [uname]);
-            req.session.user = {
-            user_id : res.resultId,
-            username : uname
-            }
-    }
-    else{
-      req.session.user = {
-      user_id: user[0].user_id,
-      username: user[0].username
-    };
-    }
+    // check if user exists
+    const users = await queryTable(
+      "SELECT * FROM user WHERE username = ?",
+      [uname]
+    );
 
-    // attach to session
-  
+    // create user if not found
+    if (users.length < 1) {
+
+      const result = await updateTable(
+        "INSERT INTO user (username) VALUES (?)",
+        [uname]
+      );
+
+      // ⭐ use insertId
+      req.session.user = {
+        user_id: result.insertId,
+        username: uname
+      };
+
+    } else {
+
+      req.session.user = {
+        user_id: users[0].user_id,
+        username: users[0].username
+      };
+    }
 
     console.log("Session created:", req.session.user);
 
-    next();
+    // VERY IMPORTANT — wait for session write
+    req.session.save(() => next());
+
   } catch (err) {
     console.error("verifyLogin error:", err);
     next(err);
   }
 };
+
+
 
 
 /* ---------------- LOGOUT ---------------- */
