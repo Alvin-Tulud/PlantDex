@@ -1,12 +1,15 @@
-import db from "../services/db.js";
+import { queryTable } from "../services/db.js";
 
 /* ---------------- LOGIN ---------------- */
 export const login = async (req, res, next) => {
   try {
-    const { email } = req.body;
+    const { uname } = req.body;
 
     // returns user if exists otherwise creates one
-    const user = await db.getUserByEmail(email);
+    const user = await queryTable("SELECT * FROM user WHERE username = ?", [uname]);
+    
+    // TODO: create user if couldn't find one
+    // And then just query the table again to get the new info
 
     // attach to session
     req.session.user = {
