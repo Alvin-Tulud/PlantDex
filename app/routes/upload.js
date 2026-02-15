@@ -6,18 +6,19 @@ import upload from "../middleware/photoUpload.js";
 import { fileURLToPath } from "url";
 import { identifyPlant } from "../services/geminiService.js";
 import { updateTable } from "../services/db.js";
+import { guardrail } from "../middleware/loginFunctions.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // home route
 
-router.get("/", async (req, res) => {
+router.get("/",guardrail, async (req, res) => {
   res.render(path.join(__dirname, "../views/upload.ejs"));
 });
 
 
-router.post("/", upload.single("image"), async (req, res) => {
+router.post("/",guardrail, upload.single("image"), async (req, res) => {
 
     try {
 
