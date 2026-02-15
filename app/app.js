@@ -10,10 +10,6 @@ app.set("view engine", "ejs");
 app.use(express.static('public'));
 
 
-import { connectSnowflake } from "./db/snowflake.js";
-
-await connectSnowflake();
-
 // Index route
 import indexRouter from "./routes/index.js";
 app.use("/", indexRouter);
