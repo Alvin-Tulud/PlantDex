@@ -24,7 +24,7 @@ export async function queryTable(query, values)
     // Query the db
     // values should be an [array], I think something breaks otherwise
     const result = await connection.promise().query(query, values);
-    //console.log(result[0]);
+    console.log(result[0]);
     console.log("Finished query");
     return(result[0]);
   } catch (err) {
