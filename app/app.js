@@ -18,6 +18,10 @@ app.use("/", indexRouter);
 import uploadRouter from "./routes/upload.js";
 app.use("/upload", uploadRouter);
 
+// social route
+import socialRouter from "./routes/social.js";
+app.use("/social", socialRouter);
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
