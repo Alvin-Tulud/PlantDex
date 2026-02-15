@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
     res.render(path.join(__dirname, "../views/login.ejs"));
 });
 
-router.post("/", login, async (req, res) => {
+router.post("/", express.json(), login, async (req, res) => {
     console.log(req.session.user);
     res.redirect("/");
 });
