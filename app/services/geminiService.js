@@ -25,7 +25,7 @@ export async function identifyPlant(imagePath) {
           },
           {
             text: `
-            Identify these plants(append another json if there are more than one) and respond ONLY in this JSON format:
+            Identify this plant and respond ONLY in this JSON format:
 
             {
             "commonName": "",

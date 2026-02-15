@@ -4,6 +4,9 @@ import path from "path";
 
 import { fileURLToPath } from "url";
 import { queryTable } from "../services/db.js";
+import { login, logout } from "../middleware/loginFunctions.js";
+
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,13 +14,13 @@ const __dirname = path.dirname(__filename);
 // home route
 
 router.get("/", async (req, res) => {
-  
-  const plants = queryTable("SELECT * FROM plant WHERE fk_user_id = ? ORDER BY addition_date DESC", [1]);
-  res.render(path.join(__dirname, "../views/home.ejs"),
-    {
-      plants: plants
-    }
-  );
+    console.log(req.session.user);
+    res.render(path.join(__dirname, "../views/login.ejs"));
+});
+
+router.post("/", login, async (req, res) => {
+    console.log(req.session.user);
+    res.render(path.join(__dirname, "../views/login.ejs"));
 });
 
 /*
