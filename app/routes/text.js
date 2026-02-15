@@ -11,10 +11,8 @@ const __dirname = path.dirname(__filename);
 // home route
 
 router.get("/", async (req, res) => {
-  
-  const plants = await queryTable("SELECT * FROM plant WHERE fk_user_id = ? ORDER BY addition_date DESC", [1]);
-  // debugging
-  console.log(plants);
+  //                                                                                             user id
+  const plants = queryTable("SELECT * FROM plant WHERE fk_user_id = ? ORDER BY addition_date DESC", [1]);
   res.render(path.join(__dirname, "../views/home.ejs"),
     {
       plants: plants

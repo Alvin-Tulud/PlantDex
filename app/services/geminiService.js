@@ -25,24 +25,32 @@ export async function identifyPlant(imagePath) {
           },
           {
             text: `
-Identify this plant and respond ONLY in JSON.
+            Identify this plant and respond ONLY in this JSON format:
 
-{
-  "commonName": "",
-  "scientificName": "",
-  "nativeTo": ""
-}
-`
+            {
+            "commonName": "",
+            "scientificName": "",
+            "Edible": "" 
+            "nativeTo(Lat,long)": ""  // Use "lat,long" format, multiple coordinates separated by semicolon
+            }
+            `
           }
         ],
       },
     ],
   });
 
-  const text = response.text;
+    const text = response.text.replace(/```json|```/g, "").trim();
 
-  // clean markdown if Gemini wraps it
-  const cleaned = text.replace(/```json|```/g, "").trim();
-
-  return JSON.parse(cleaned);
+  // Parse JSON safely
+  try {
+    return JSON.parse(text);
+  } catch (err) {
+    console.error("Failed to parse Gemini response:", text, err);
+    return {
+      commonName: "Unknown Plant",
+      scientificName: "Unknown",
+      "nativeTo(Lat,long)": ""
+    };
+}
 }
