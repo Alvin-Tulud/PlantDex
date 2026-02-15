@@ -30,7 +30,8 @@ export async function identifyPlant(imagePath) {
             {
             "commonName": "",
             "scientificName": "",
-            "Edible": "" 
+            "Edible": "",
+            "Description": "", // character limit of 512
             "nativeTo(Lat,long)": ""  // Use "lat,long" format, multiple coordinates separated by semicolon
             }
             `
