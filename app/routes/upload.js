@@ -5,6 +5,7 @@ import upload from "../middleware/photoUpload.js";
 
 import { fileURLToPath } from "url";
 import { identifyPlant } from "../services/geminiService.js";
+import { updateTable } from "../services/db.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -34,19 +35,22 @@ router.post("/", upload.single("image"), async (req, res) => {
 
         console.log(plantData);
 
-        return res.status(200).json({
-            success: true,
-            plant: plantData,
-            image: req.file.filename
-        });
+        // Plant data has:
+        // commonName, scientificName, Edible, 'nativeTo(Lat,long)'
+        // then req.file.filename is the filename
+
+        // To make a new entry I need
+        // common_name, scientific_name, edible, coordinates, addition_date (CURRENT_DATE), image
+        const result = await updateTable( "INSERT INTO plant (fk_user_id, common_name, scientific_name, edible, coordinates, addition_date, image) VALUES (?, ?, ?, ?, ?, CURRENT_DATE, ?)", 
+            [req.session.user.user_id, plantData.commonName, plantData.scientificName, plantData.Edible, plantData["nativeTo(Lat,long)"], req.file.filename]);
+
+        return res.redirect(303, "/");
 
     } catch (err) {
         console.error("Upload Route Error:", err);
 
-        return res.status(500).json({
-            error: "AI failed to analyze plant"
-        });
-    }
+        return res.redirect(303, "/upload");
+    } 
 });
 
 export default router;
