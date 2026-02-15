@@ -7,8 +7,8 @@ import fs from "fs";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Multer storage in memory for processing before saving
-const storageConfig = multer.memoryStorage(); 
+// --- Use memory storage for processing with Sharp ---
+const storageConfig = multer.memoryStorage();
 
 const fileFilterConfig = function(req, file, cb) {
   if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
@@ -18,36 +18,40 @@ const fileFilterConfig = function(req, file, cb) {
   }
 };
 
+// Increase file size limit to 50 MB
 const upload = multer({
   storage: storageConfig,
-  limits: { fileSize: 1024 * 1024 * 5 },
+  limits: { fileSize: 1024 * 1024 * 50 }, // 50 MB
   fileFilter: fileFilterConfig,
 });
 
-// Middleware to resize & convert image to JPEG
+// Middleware: resize & convert image to JPEG, save to disk
 export const processImage = async (req, res, next) => {
   if (!req.file) return next();
 
   const uploadsDir = path.join(__dirname, "../public/uploads");
 
-  // Ensure uploads folder exists
   if (!fs.existsSync(uploadsDir)) {
     fs.mkdirSync(uploadsDir, { recursive: true });
   }
 
-  // Generate output file name
+  // Unique filename to avoid collisions
   const timestamp = Date.now();
-  const outputFilename = `${timestamp}-${req.file.originalname.split('.')[0]}.jpg`;
+  const safeName = req.file.originalname
+    .replace(/\s+/g, "_") // replace spaces with underscores
+    .replace(/\.[^/.]+$/, ""); // remove extension
+
+  const outputFilename = `${timestamp}-${safeName}.jpg`;
   const outputPath = path.join(uploadsDir, outputFilename);
 
   try {
-    // Resize and convert
+    // Resize and convert to JPEG
     await sharp(req.file.buffer)
-      .resize(1028, 1028, { fit: "cover" }) // force 1028x1028 with cropping
-      .jpeg({ quality: 90 }) // convert to JPEG
+      .resize(1028, 1028, { fit: "cover" }) // force square
+      .jpeg({ quality: 90 })                 // convert to JPEG
       .toFile(outputPath);
 
-    // Replace req.file info so routes know the file path
+    // Update req.file for route
     req.file.path = outputPath;
     req.file.filename = outputFilename;
     req.file.mimetype = "image/jpeg";
