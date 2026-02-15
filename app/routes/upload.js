@@ -12,6 +12,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // home route
+router.get("/", guardrail, upload.single("image"), async (req, res) => {
+
+      res.render(path.join(__dirname, "../views/upload.ejs")
+      );
+});
 
 router.post("/", guardrail, upload.single("image"), async (req, res) => {
   try {
