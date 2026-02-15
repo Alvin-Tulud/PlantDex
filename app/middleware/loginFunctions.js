@@ -17,8 +17,8 @@ export const login = async (req, res, next) => {
 
     // attach to session
     req.session.user = {
-      user_id: user.user_id,
-      username: user.username
+      user_id: user[0].user_id,
+      username: user[0].username
     };
 
     console.log("Session created:", req.session.user);

@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
 
 router.post("/", express.json(), login, async (req, res) => {
     console.log(req.session.user);
-    res.render(path.join(__dirname, "../views/login.ejs"));
+    res.redirect("/");
 });
 
 /*
