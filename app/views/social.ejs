@@ -1,0 +1,51 @@
+<%-include("navigator/header.ejs")%>
+
+<!--container for plant grid items-->
+<div class="w-full flex flex-row items-center justify-evenly p-2">
+    <div id="plantdisplay"class="h-[42rem] md:h-[38rem] lg:h-[38rem] overflow-y-auto p-4 grid grid-cols-1 content-evenly justify-center gap-4 font-family-dm-mono">
+        <% if (plants && plants.length > 0) {%>
+            <% plants.forEach(function(plant) { %>
+
+                <!--REPLACE INSIDE LOGIC - copy from home.ejs-->
+
+                <div class="w-[40rem] bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-row content-evenly justify-evenly">
+                    <div class="mb-3">
+                        <img src="/images/20260214_021221.jpg" alt="<%#= user.name %>" class="w-80 h-80 object-cover">
+                        <h3 class="font-bold text-lg">Uploaded by <%#= user.name %>UserName</h3>
+                        <p class="text-sm text-gray-500">Uploaded on<%#= new Date(user.createdAt).toLocaleDateString() %>timestamp</p>
+                    </div>
+                    <div class="ml-4">
+                        <h2 class="text-xl font-regular mb-2"><%#= user.plantName %>plant name</h2>
+                        <p class="text-gray-600"><%#= user.plantDescription %>plant description</p>
+                        <p class="text-sm text-gray-500 mt-2">Type: <%#= user.plantType %>plant type</p>
+                    </div>
+                </div>
+                <div class="w-[40rem] bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-row content-evenly justify-evenly">
+                    <div class="mb-3">
+                        <img src="/images/20260214_021221.jpg" alt="<%#= user.name %>" class="w-80 h-80 object-cover">
+                        <h3 class="font-bold text-lg">Uploaded by <%#= user.name %>UserName</h3>
+                        <p class="text-sm text-gray-500">Uploaded on<%#= new Date(user.createdAt).toLocaleDateString() %>timestamp</p>
+                    </div>
+                    <div class="ml-4">
+                        <h2 class="text-xl font-regular mb-2"><%#= user.plantName %>plant name</h2>
+                        <p class="text-gray-600"><%#= user.plantDescription %>plant description</p>
+                        <p class="text-sm text-gray-500 mt-2">Type: <%#= user.plantType %>plant type</p>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <div class="hidden">
+                <h1 class="text-4xl font-bold text-center mt-8 mb-4">No User Posts Found</h1>
+                <p class="text-center text-gray-600">No user posts available.</p>
+            </div>
+        <% } %>
+    </div>
+    <div class="basis-1/2 gap-4 bg-white rounded-lg shadow-md p-4 border border-gray-200 font-family-dm-mono">
+        <h1>Plant Distribution Heatmap</h1>
+        <h2 class="text-sm text-gray-500 mb-4">Click on a Plant Post on the Right to see its Distribution</h2>
+        <div id="map"></div>
+    </div>
+</div>
+
+
+<%-include("navigator/footer.ejs")%>

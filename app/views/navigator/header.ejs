@@ -4,20 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     <title>PlantDex</title>
-    <link rel="stylesheet" href="/css/style.css">
-=======
     <link rel="stylesheet" href="/css/output.css">
->>>>>>> Stashed changes
-=======
-    <link rel="stylesheet" href="/css/output.css">
->>>>>>> Stashed changes
+    <!-- Leaflet CSS -->
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <!-- internal stylesheet bc why not-->
+    <style>
+    #map {
+        height: 500px;
+        width: 100%;
+        margin-top: 20px;
+    }
+    /* Button disabled state */
+    #plantSearchBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    }
+
+        /* Button enabled hover state */
+        #plantSearchBtn:not(:disabled):hover {
+        cursor: pointer;
+        }
+    </style>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+    <script src="/js/plantheatmap.js"></script>
 </head>
 
-<body class="">
-    <div class="">
-        <h1 class="">PlantDex</h1>
+<body class="bg-[#F2E3BB] flex flex-col">
+    <div class="bg-[#427A43]/85 flex flex-row items-center justify-center border-b-4 border-l-4 border-r-4 border-[#005F02] rounded-b-md">
+        <div class="bg-[url('/images/fern.png')] bg-size-[2%] w-full bg-repeat align-middle justify-center">
+            <div class="bg-[#427A43]/70 p-4">
+                <h1 class="text-6xl text-white text-center font-family-fraunces font-medium">PlantDex</h1>
+                <h2 class="text-xl text-white text-center font-family-dm-mono font-normal">From Backcountry to Backyard</h2>
+            </div>
+        </div>
     </div>
-    <!-- put all of the user info here -->
